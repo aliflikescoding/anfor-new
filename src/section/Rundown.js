@@ -32,7 +32,7 @@ const RundownPage = () => {
       <section 
         className="w-full h-screen flex flex-col justify-center items-center px-4"
         style={{
-          background: 'linear-gradient(to bottom, #FEB82F 80%, #FDF4F2 100%)'
+          background: 'linear-gradient(to bottom, #FEB82F 70%, #FDF4F2 100%)'
         }}
       >
         <motion.div
@@ -41,7 +41,7 @@ const RundownPage = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h1 className="text-[#FDF4F2] text-[48px] xs:text-[60px] sm:text-[80px] md:text-[100px] lg:text-[150px] font-extrabold italic leading-[0.9]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <h1 className="text-[#FDF4F2] text-[42px] xs:text-[60px] sm:text-[80px] md:text-[60px] lg:text-[150px] font-extrabold italic leading-[0.9]" style={{ fontFamily: 'Inter, sans-serif' }}>
             <span className="block">RANGKAIAN</span>
             <span className="block">ACARA</span>
             <span className="block">ANFORCOM</span>

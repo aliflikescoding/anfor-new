@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const Countdown = () => {
+const CountdownSection = () => {
   const calculateTimeLeft = () => {
     const targetDate = new Date("2025-08-31T23:59:59");
     const now = new Date();
@@ -112,4 +112,4 @@ const Countdown = () => {
   );
 };
 
-export default Countdown;
+export default CountdownSection;

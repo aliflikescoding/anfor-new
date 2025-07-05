@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
 import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
 
-const AnforcomAccordion = () => {
+const CompetitionSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [accordionHeights, setAccordionHeights] = useState([]);
   const accordionRefs = useRef([]);
@@ -303,4 +303,4 @@ const AnforcomAccordion = () => {
   );
 };
 
-export default AnforcomAccordion;
+export default CompetitionSection;

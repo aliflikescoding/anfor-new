@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
-const WinnersPrize = () => {
+const PrizeSection = () => {
   const prizes = [
     {
       id: 1,
@@ -107,4 +107,4 @@ const WinnersPrize = () => {
   );
 };
 
-export default WinnersPrize;
+export default PrizeSection;
