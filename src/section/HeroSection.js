@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -39,6 +40,25 @@ const HeroSection = () => {
           sizes="100vw"
           className="h-auto w-[25%] absolute top-[-45%] right-[5%] scale-y-[-1]"
         />
+      </div>
+      <div className="flex justify-between items-center mt-8">
+        <Link href={`/`}>
+          <p className="font-bold uppercase text-3xl">
+            anforcom <br /> 2025
+          </p>
+        </Link>
+        <Link href={`/`}>
+          <Image
+            src="/logo.svg"
+            auto
+            alt="robot"
+            height={0}
+            width={0}
+            sizes="100vw"
+            className="h-auto w-auto"
+          />
+        </Link>
+        <button>daftar</button>
       </div>
     </div>
   );
