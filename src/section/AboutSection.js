@@ -1,10 +1,40 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { IoPlayCircleOutline } from "react-icons/io5";
+import { useHeader } from "@/context/HeaderContext";
 
 const AboutSection = () => {
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When it enters viewport
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      },
+      { threshold: 0.1 } // adjust how much should be visible to trigger
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="custom-container pt-[45vh] pb-[60vh]">
+    <div ref={sectionRef} className="custom-container pt-[45vh] pb-[60vh]">
       <div className="flex flex-col items-center justify-between text-center relative">
         <h1 className="text-5xl capitalize font-semibold">tentang anforcom</h1>
         <p className="text-md my-4">

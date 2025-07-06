@@ -1,10 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import HeaderComponent from "@/components/HeaderComponent";
+import { useHeader } from "@/context/HeaderContext";
 
 const HeroSection = () => {
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="custom-container py-[15vh]">
+    <div ref={sectionRef} className="custom-container py-[15vh]">
       <div className="relative h-[500px] overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
@@ -40,25 +67,7 @@ const HeroSection = () => {
           className="h-auto w-[25%] absolute top-[-45%] right-[5%] scale-y-[-1]"
         />
       </div>
-      <div className="flex justify-between items-center mt-8">
-        <Link href={`/`}>
-          <p className="font-bold uppercase text-3xl">
-            anforcom <br /> 2025
-          </p>
-        </Link>
-        <Link href={`/`}>
-          <Image
-            src="/logo.svg"
-            auto
-            alt="robot"
-            height={0}
-            width={0}
-            sizes="100vw"
-            className="h-auto w-auto"
-          />
-        </Link>
-        <button className="btn btn-neutral btn-custom">daftar</button>
-      </div>
+      <HeaderComponent />
     </div>
   );
 };
