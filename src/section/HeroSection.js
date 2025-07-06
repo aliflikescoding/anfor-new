@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <div className="custom-container py-4">
+    <div className="custom-container py-[15vh]">
       <div className="relative h-[500px] overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
@@ -58,7 +58,7 @@ const HeroSection = () => {
             className="h-auto w-auto"
           />
         </Link>
-        <button>daftar</button>
+        <button className="btn btn-neutral btn-custom">daftar</button>
       </div>
     </div>
   );
