@@ -1,3 +1,4 @@
+import Event from '@/section/Event';
 import Competition from '@/section/Competition';
 import Prize from '@/section/Prize';
 import Countdown from '@/section/Countdown';
@@ -8,6 +9,7 @@ import Teaser from '@/section/Teaser';
 export default function Home() {
   return (
     <>
+      <Event/>
       <Competition/>
       <Prize/>
       <Countdown/>
