@@ -60,7 +60,7 @@ const EventSection = () => {
       {/* ========================= Page 1 ========================= */}
       <div className="container mx-auto px-6 xl:px-28 lg:px-40">
         <div className="pt-24 pb-10">
-          <h2 className="text-[28px] xl:text-[35px] lg:text-[50px] font-bold italic leading-tight text-left text-white">
+          <h2 className="text-2xl sm:text-4xl font-bold italic leading-tight text-left text-white">
             {content.heading.split("seminar").map((text, i) =>
               i === 0 ? (
                 text
@@ -100,7 +100,7 @@ const EventSection = () => {
           <div className="xl:w-1/2 mb-18 sm:mb-[20vh] xl:mb-0">
             <ThreeImage />
           </div>
-          <div className="xl:w-1/2 text-white text-sm xl:text-base lg:text-[18px] leading-relaxed">
+          <div className="xl:w-1/2 text-white text-lg leading-relaxed">
             {content.description}
           </div>
         </div>
