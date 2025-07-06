@@ -16,6 +16,10 @@ const HeaderComponent = () => {
       return "btn-outline btn-accent";
     }
 
+    if (section === "rundown") {
+      return "";
+    }
+
     return "btn-accent"
   }
 
@@ -28,6 +32,10 @@ const HeaderComponent = () => {
       return "btn-outline btn-accent";
     }
 
+    if (section === "rundown") {
+      return "";
+    }
+
     return "btn-accent";
   };
 
@@ -36,12 +44,20 @@ const HeaderComponent = () => {
       return "btn-accent";
     }
 
+    if (section === "rundown") {
+      return "";
+    }
+
     return "btn-accent";
   };
 
   const getButtonSectionVariant = () => {
     if (section === "footer") {
       return ("btn-outline");
+    }
+
+    if (section === "prize") {
+      return "btn-ghost";
     }
 
     return "";
@@ -61,12 +77,12 @@ const HeaderComponent = () => {
 
   const getButtonVariant = () => {
     // Current logic for footer section
-    if (section === "footer") {
+    if (section === "footer" || section === "event") {
       return "btn-accent";
     }
 
     // Default case
-    return "btn-accent";
+    return "btn-neutral";
 
     // Room for additional logic in the future
     // Add more conditions here as needed
