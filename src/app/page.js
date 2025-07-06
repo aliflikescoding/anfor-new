@@ -8,6 +8,7 @@ import Gallery from '@/section/Gallery';
 import Teaser from '@/section/Teaser';
 import LenisWrapper from "@/components/LenisWrapper";
 import FaqSection from "@/section/FaqSection";
+import FooterSection from "@/section/FooterSection";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Gallery />
       <Teaser />
       <FaqSection />
+      <FooterSection />
     </LenisWrapper>
   );
 }
