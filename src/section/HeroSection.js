@@ -33,7 +33,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="custom-container pt-[15vh] pb-[30vh]">
+    <div ref={sectionRef} className="custom-container pt-[7.5vh] sm:pt-[15vh] pb-[30vh]">
       <div className="relative h-[500px] overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
@@ -44,7 +44,7 @@ const HeroSection = () => {
         />
 
         {/* Text Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-between py-4 px-10">
+        <div className="absolute inset-0 hidden xl:flex flex-col justify-between py-4 px-10">
           <h2 className="text-6xl uppercase font-bold text-white mb-6 leading-tight">
             Digital innovation
           </h2>
@@ -60,13 +60,38 @@ const HeroSection = () => {
           </div>
         </div>
 
+        <div className="absolute z-10 inset-0 xl:hidden flex flex-col justify-between py-4 px-5">
+          <div>
+            <h2 className="text-3xl font-bold uppercase text-white leading-tight">
+              Digital innovation
+            </h2>
+            <h2 className="text-3xl font-bold uppercase text-white mb-6 leading-tight">
+              for prosperous <br /> urban growth
+            </h2>
+          </div>
+          <p className="text-medium text-md text-white text-left">
+            Inovasi digital menjadi pendorong utama dalam membangun kota yang
+            cerdas, efisien, dan berkelanjutan demi tercapainya kesejahteraan
+            bersama.
+          </p>
+        </div>
+
         <Image
           src="/robot.png"
           alt="robot"
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto w-[25%] absolute top-[-45%] right-[5%] scale-y-[-1]"
+          className="h-auto w-[25%] absolute top-[-45%] right-[5%] scale-y-[-1] xl:block hidden"
+        />
+
+        <Image
+          src="/robot.png"
+          alt="robot"
+          height={0}
+          width={0}
+          sizes="100vw"
+          className="h-auto w-[45%] sm:w-[35%] absolute top-1/4 sm:top-1/8 right-[-15%] sm:right-[-10%] origin-center rotate-270 xl:hidden block"
         />
       </div>
       <HeaderComponent />
