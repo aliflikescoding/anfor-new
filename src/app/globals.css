@@ -71,6 +71,22 @@
   }
 }
 
+
+@keyframes gallery-scroll {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .animate-gallery-scroll {
+    animation: gallery-scroll 40s linear infinite;
+  }
+}
+
 @layer components {
   .custom-container {
       @apply max-w-[1440px] mx-auto px-4;
