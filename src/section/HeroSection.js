@@ -31,7 +31,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="custom-container py-[15vh]">
+    <div ref={sectionRef} className="custom-container pt-[15vh] pb-[30vh]">
       <div className="relative h-[500px] overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
