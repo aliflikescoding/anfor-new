@@ -104,9 +104,9 @@ const HeaderComponent = () => {
 
         {/* Mobile header */}
         <div
-          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] p-4 transition-all`}
+          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] p-4 transition-al l w-full`}
         >
-          <div className="custom-container flex gap-4 justify-between items-center">
+          <div className="custom-container flex gap-2 justify-between items-center">
             <Link href={`/`}>
               <p className="font-bold uppercase text-xl sm:text-3xl">
                 anforcom <br /> 2025
@@ -118,7 +118,7 @@ const HeaderComponent = () => {
               </button>
               <button
                 onClick={() => setIsLikeBarOpen(!isLikeBarOpen)}
-                className="btn btn-sm btn-neutral"
+                className={`btn btn-md ${getButtonVariant()}`}
               >
                 <RxHamburgerMenu />
               </button>
@@ -136,17 +136,17 @@ const HeaderComponent = () => {
                 className="mt-4 bg-base-200 p-4 flex justify-center gap-4 shadow-md rounded-xl"
               >
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantEvent()} btn-custom`}
+                  className={`btn btn-md btn-primary`}
                 >
                   Event
                 </button>
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantHome()} btn-custom`}
+                  className={`btn btn-md btn-primary`}
                 >
                   Home
                 </button>
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantComp()} btn-custom`}
+                  className={`btn btn-md btn-primary`}
                 >
                   Competition
                 </button>
