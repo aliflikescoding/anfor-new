@@ -127,7 +127,7 @@ const HeaderComponent = () => {
       >
         <div className="custom-container flex justify-between items-center">
           <Link href={`/`}>
-            <p className="font-bold uppercase text-3xl">
+            <p className="font-bold uppercase text-xl sm:text-3xl">
               anforcom <br /> 2025
             </p>
           </Link>
@@ -157,7 +157,7 @@ const HeaderComponent = () => {
                 height={0}
                 width={0}
                 sizes="100vw"
-                className="h-auto w-auto"
+                className="h-auto w-[50px] sm:w-auto"
               />
             </Link>
           )}
@@ -172,7 +172,7 @@ const HeaderComponent = () => {
   return (
     <div className="flex mt-8 justify-between items-center transition-all">
       <Link href={`/`}>
-        <p className="font-bold uppercase text-3xl">
+        <p className="font-bold uppercase text-xl sm:text-3xl">
           anforcom <br /> 2025
         </p>
       </Link>
@@ -183,7 +183,7 @@ const HeaderComponent = () => {
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto w-auto"
+          className="h-auto w-[50px] sm:w-auto"
         />
       </Link>
       <button className={`btn ${getButtonVariant()} btn-custom`}>daftar</button>
