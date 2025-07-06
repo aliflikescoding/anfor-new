@@ -33,7 +33,6 @@ const HeroSection = () => {
 
         <Image
           src="/robot.png"
-          auto
           alt="robot"
           height={0}
           width={0}
