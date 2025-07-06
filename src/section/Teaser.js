@@ -9,7 +9,7 @@ const TeaserSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const YOUTUBE_ID = 'rsWR64xHXQk';
 
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const TeaserSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

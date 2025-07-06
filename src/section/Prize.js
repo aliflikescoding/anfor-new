@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { useHeader } from "@/context/HeaderContext";
 
 const PrizeSection = () => {
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const prizes = [
     {
       id: 1,
@@ -36,6 +36,7 @@ const PrizeSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

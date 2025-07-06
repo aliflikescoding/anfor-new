@@ -40,9 +40,9 @@
   --noise: 1;
 }
 
-@utility btn {
+/* @utility btn {
   @apply capitalize;
-}
+} */
 
 @layer base {
 
@@ -73,6 +73,10 @@
 @layer components {
   .custom-container {
       @apply max-w-[1440px] mx-auto px-4;
+    }
+
+    .btn {
+      @apply capitalize bg-base-100;
     }
         .btn-custom {
           padding-top: 2rem !important;

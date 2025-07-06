@@ -37,7 +37,7 @@ const faq = [
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -45,6 +45,7 @@ const FaqSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

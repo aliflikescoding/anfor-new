@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { useHeader } from "@/context/HeaderContext";
 
 const GallerySection = () => {
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const GallerySection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

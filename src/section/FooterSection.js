@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useHeader } from "@/context/HeaderContext";
 
 const FooterSection = () => {
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const FooterSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

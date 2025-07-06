@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useHeader } from "@/context/HeaderContext";
 
 const RundownPage = () => {
-  const { setIsSticky } = useHeader();
+  const { setIsSticky, setIsShowButton } = useHeader();
   const timelineRef = useRef(null);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ const RundownPage = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsSticky(true);
+          setIsShowButton(true);
         }
       },
       { threshold: 0.1 }

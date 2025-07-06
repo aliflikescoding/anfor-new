@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useHeader } from "@/context/HeaderContext";
 
 const HeaderComponent = () => {
-  const { isSticky } = useHeader();
+  const { isSticky, isShowButton } = useHeader();
 
   if (isSticky) {
     return (
@@ -16,16 +16,24 @@ const HeaderComponent = () => {
               anforcom <br /> 2025
             </p>
           </Link>
-          <Link href={`/`}>
-            <Image
-              src="/logo.svg"
-              alt="robot"
-              height={0}
-              width={0}
-              sizes="100vw"
-              className="h-auto w-auto"
-            />
-          </Link>
+          {isShowButton ? (
+            <div className="flex items-center gap-4">
+              <button className="btn btn-custom">Event 🗓️</button>
+              <button className="btn btn-custom">Home 🏠</button>
+              <button className="btn btn-custom">Competition 🏆</button>
+            </div>
+          ) : (
+            <Link href={`/`}>
+              <Image
+                src="/logo.svg"
+                alt="robot"
+                height={0}
+                width={0}
+                sizes="100vw"
+                className="h-auto w-auto"
+              />
+            </Link>
+          )}
           <button className="btn btn-neutral btn-custom">daftar</button>
         </div>
       </div>
