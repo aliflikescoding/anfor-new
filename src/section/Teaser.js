@@ -1,12 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useHeader } from "@/context/HeaderContext";
 
 const TeaserSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const YOUTUBE_ID = 'rsWR64xHXQk';
+
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky]);
 
   const bounceVariant = {
     initial: { opacity: 0, y: 50 },
@@ -20,7 +45,7 @@ const TeaserSection = () => {
   };
 
   return (
-    <>
+    <div ref={sectionRef}>
       {/* JUDUL */}
       <section className="bg-[#FDF4F2] min-h-screen flex items-center justify-center px-4">
         <motion.div
@@ -106,7 +131,7 @@ const TeaserSection = () => {
           />
         </motion.div>
       </section>
-    </>
+    </div>
   );
 };
 

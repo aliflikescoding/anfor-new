@@ -1,11 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import { useHeader } from "@/context/HeaderContext";
 
 const FooterSection = () => {
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky]);
+
   return (
-    <footer className="bg-[#020b0d] text-base-100">
+    <footer ref={sectionRef} className="bg-[#020b0d] text-base-100">
       <div className="min-h-screen flex items-center justify-center relative">
         <div className="h-full w-full">
           {/* Top Text Content */}

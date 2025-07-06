@@ -1,10 +1,36 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { useHeader } from "@/context/HeaderContext";
 
 const GallerySection = () => {
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky]);
+
   return (
-    <div className="bg-[#FDF4F2] min-h-screen flex items-center justify-center px-4">
+    <div ref={sectionRef} className="bg-[#FDF4F2] min-h-screen flex items-center justify-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

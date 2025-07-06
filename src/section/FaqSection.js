@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useHeader } from "@/context/HeaderContext";
 
 const faq = [
   {
@@ -36,13 +37,36 @@ const faq = [
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const { setIsSticky } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky]);
 
   const toggleFaq = (index) => {
     setActiveIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <div className="min-h-screen bg-[#FDF4F2] relative px-4 py-20 overflow-hidden">
+    <div ref={sectionRef} className="min-h-screen bg-[#FDF4F2] relative px-4 py-20 overflow-hidden">
       {/* Big FAQ Heading */}
       <h1 className="font-bold text-[300px] md:text-[500px] leading-none absolute top-0 left-0 text-black select-none z-0">
         FAQ
