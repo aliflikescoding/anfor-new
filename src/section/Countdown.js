@@ -71,34 +71,62 @@ const CountdownSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-primary w-full overflow-hidden pt-[20vh] pb-[30vh] px-0">
-      <div ref={marqueeRef} className="relative h-[40px] sm:h-[60px] lg:h-[80px] overflow-hidden w-full m-0">
+    <div
+      ref={sectionRef}
+      className="bg-primary w-full overflow-hidden pt-[20vh] pb-[30vh] px-0"
+    >
+      {/* TODO: Add responsive padding - use different padding for mobile/tablet/desktop */}
+
+      <div
+        ref={marqueeRef}
+        className="relative h-[80px] overflow-hidden w-full m-0"
+      >
+        {/* TODO: Add responsive height - use different heights for mobile/tablet/desktop */}
+
         <div
-          className={`absolute w-max flex whitespace-nowrap items-center ${isVisible ? "animate-marquee" : "justify-center"}`}
+          className={`absolute w-max flex whitespace-nowrap items-center ${
+            isVisible ? "animate-marquee" : "justify-center"
+          }`}
           style={{ left: 0 }}
         >
-          {Array(20).fill(null).map((_, i) => (
-            <span key={i} className="flex items-center px-2 sm:px-3">
-              <span className="text-[#FDF4F2] text-[16px] sm:text-[28px] lg:text-[48px] font-semibold italic pr-2 sm:pr-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                COUNTDOWN TO THE MAIN EVENT
+          {Array(20)
+            .fill(null)
+            .map((_, i) => (
+              <span key={i} className="flex items-center px-3">
+                {/* TODO: Add responsive padding - use different padding for mobile/tablet/desktop */}
+
+                <span
+                  className="text-[#FDF4F2] text-[48px] font-semibold italic pr-3"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {/* TODO: Add responsive font size - use different text sizes for mobile/tablet/desktop */}
+                  COUNTDOWN TO THE MAIN EVENT
+                </span>
+                <Image
+                  src="/images/whitestar.png"
+                  alt="Star"
+                  width={0}
+                  height={0}
+                  className="w-[40px] h-[40px] mx-2"
+                />
               </span>
-              <Image 
-                src="/images/whitestar.png" 
-                alt="Star" 
-                width={0}
-                height={0}
-                className="w-[16px] h-[16px] sm:w-[24px] sm:h-[24px] lg:w-[40px] lg:h-[40px] mx-1 sm:mx-2"
-              />
-            </span>
-          ))}
+            ))}
         </div>
       </div>
 
       {/* Countdown Boxes */}
       {timeLeft && (
-        <div className="flex justify-center items-center gap-0 sm:gap-1 mt-6 sm:mt-8 lg:mt-10 mb-8 sm:mb-12 lg:mb-16 flex-nowrap overflow-x-auto px-1 sm:px-2 pt-6 sm:pt-8 lg:pt-10">
-          <div className="w-[40px] sm:w-[70px] lg:w-[120px] h-[40px] sm:h-[70px] lg:h-[120px] relative flex-shrink-0 flex items-center justify-center">
-            <Image src="/images/starline.png" alt="Separator" fill className="object-contain" />
+        <div className="flex flex-col xl:flex-row justify-center items-center gap-1 mt-10 mb-16 flex-nowrap overflow-x-auto px-2 pt-10">
+          {/* TODO: Add responsive gaps, margins, and padding - use different spacing for mobile/tablet/desktop */}
+
+          <div className="w-[120px] h-[120px] relative flex-shrink-0 hidden xl:flex items-center justify-center">
+            {/* TODO: Add responsive separator sizes - use different widths/heights for mobile/tablet/desktop */}
+            <Image
+              src="/images/starline.png"
+              alt="Separator"
+              fill
+              className="object-contain"
+            />
           </div>
 
           {[
@@ -108,12 +136,32 @@ const CountdownSection = () => {
             { label: "Detik", value: timeLeft.seconds },
           ].map((item, idx) => (
             <React.Fragment key={idx}>
-              <div className="text-center w-[50px] sm:w-[90px] lg:w-[160px] flex-shrink-0">
-                <div className="text-[#FDF4F2] text-[32px] sm:text-[60px] lg:text-[144px] font-bold leading-none min-h-[40px] sm:min-h-[80px] lg:min-h-[160px] text-center" style={{ fontFamily: "Inter, sans-serif" }}>{item.value}</div>
-                <div className="text-[#FDF4F2] text-[14px] sm:text-[24px] lg:text-[48px] font-semibold italic text-center" style={{ fontFamily: "Inter, sans-serif" }}>{item.label}</div>
+              <div className="text-center w-[160px] flex-shrink-0">
+                {/* TODO: Add responsive container width - use different widths for mobile/tablet/desktop */}
+
+                <div
+                  className="text-[#FDF4F2] text-[144px] font-bold leading-none min-h-[160px] text-center"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {/* TODO: Add responsive font size and min-height - use different sizes for mobile/tablet/desktop */}
+                  {item.value}
+                </div>
+                <div
+                  className="text-[#FDF4F2] text-[48px] font-semibold italic text-center"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {/* TODO: Add responsive font size - use different sizes for mobile/tablet/desktop */}
+                  {item.label}
+                </div>
               </div>
-              <div className="w-[50px] sm:w-[70px] lg:w-[120px] h-[40px] sm:h-[70px] lg:h-[120px] relative flex-shrink-0 flex items-center justify-center">
-                <Image src="/images/starline.png" alt="Separator" fill className="object-contain" />
+              <div className="w-[120px] h-[120px] relative flex-shrink-0 hidden xl:flex items-center justify-center">
+                {/* TODO: Add responsive separator sizes - use different widths/heights for mobile/tablet/desktop */}
+                <Image
+                  src="/images/starline.png"
+                  alt="Separator"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </React.Fragment>
           ))}
@@ -123,7 +171,7 @@ const CountdownSection = () => {
       {/* Marquee Animation Style */}
       <style jsx>{`
         .animate-marquee {
-          animation: marquee 25s linear infinite;
+          animation: marquee 60s linear infinite;
         }
 
         @keyframes marquee {
