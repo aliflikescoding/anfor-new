@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useHeader } from "@/context/HeaderContext";
 
 const RundownPage = () => {
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const timelineRef = useRef(null);
 
   useEffect(() => {
