@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useHeader } from "@/context/HeaderContext";
 import Image from "next/image";
 import {
   motion,
@@ -10,6 +11,7 @@ import {
 } from "framer-motion";
 
 const CompetitionSection = () => {
+  const { setIsSticky } = useHeader();
   const [activeIndex, setActiveIndex] = useState(0);
   const [accordionHeights, setAccordionHeights] = useState([]);
   const accordionRefs = useRef([]);
@@ -54,6 +56,27 @@ const CompetitionSection = () => {
   //     controls.start("visible");
   //   }
   // }, [isInView, controls]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true); // or false, depending on your desired header behavior
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const [hasAnimated, setHasAnimated] = useState(
     Array(programs.length).fill(false)
