@@ -19,7 +19,7 @@ const AboutSection = () => {
         }
         // do nothing when it leaves
       },
-      { threshold: 0.1 }
+      { threshold: 0.4 }
     );
 
     if (sectionRef.current) {

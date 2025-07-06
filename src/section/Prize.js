@@ -40,7 +40,7 @@ const PrizeSection = () => {
           setSection("prize");
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.09 }
     );
 
     if (ref.current) {

@@ -13,6 +13,7 @@ import Teaser from "@/section/Teaser";
 import FaqSection from "@/section/FaqSection";
 import FooterSection from "@/section/FooterSection";
 import LenisWrapper from "@/components/LenisWrapper";
+import RangkaianSection from "@/section/RangkaianSection";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
           <Competition />
           <Prize />
           <Countdown />
+          <RangkaianSection />
           <Rundown />
           <Gallery />
           <Teaser />

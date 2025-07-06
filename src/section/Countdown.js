@@ -18,7 +18,7 @@ const CountdownSection = () => {
           setSection("countdown");
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.5 }
     );
 
     if (sectionRef.current) {
@@ -64,14 +64,14 @@ const CountdownSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
     if (marqueeRef.current) observer.observe(marqueeRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-[#FEB82F] w-full overflow-hidden py-[20vh] px-0">
+    <div ref={sectionRef} className="bg-primary w-full overflow-hidden pt-[20vh] pb-[30vh] px-0">
       <div ref={marqueeRef} className="relative h-[40px] sm:h-[60px] lg:h-[80px] overflow-hidden w-full m-0">
         <div
           className={`absolute w-max flex whitespace-nowrap items-center ${isVisible ? "animate-marquee" : "justify-center"}`}
