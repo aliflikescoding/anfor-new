@@ -58,9 +58,9 @@ const EventSection = () => {
   return (
     <div ref={sectionRef} className="bg-[#FEB82F]">
       {/* ========================= Page 1 ========================= */}
-      <div className="container mx-auto px-6 md:px-28 lg:px-40">
+      <div className="container mx-auto px-6 xl:px-28 lg:px-40">
         <div className="pt-24 pb-10">
-          <h2 className="text-[28px] md:text-[35px] lg:text-[50px] font-bold italic leading-tight text-left text-white">
+          <h2 className="text-[28px] xl:text-[35px] lg:text-[50px] font-bold italic leading-tight text-left text-white">
             {content.heading.split("seminar").map((text, i) =>
               i === 0 ? (
                 text
@@ -95,41 +95,35 @@ const EventSection = () => {
       </div>
 
       {/* Content after separator */}
-      <div className="container mx-auto px-6 md:px-28 lg:px-40 pt-10 pb-24">
-        <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="md:w-1/2">
+      <div className="container mx-auto px-6 xl:px-28 lg:px-40 pt-10 pb-24">
+        <div className="flex flex-col xl:flex-row gap-8 items-center">
+          <div className="xl:w-1/2 mb-18 sm:mb-[20vh] xl:mb-0">
             <ThreeImage />
           </div>
-          <div className="md:w-1/2 text-white text-sm md:text-base lg:text-[18px] leading-relaxed">
+          <div className="xl:w-1/2 text-white text-sm xl:text-base lg:text-[18px] leading-relaxed">
             {content.description}
           </div>
         </div>
       </div>
 
       {/* ========================= Page 2 ========================= */}
-      <div className="container mx-auto px-6 md:px-28 lg:px-40 min-h-screen flex flex-col justify-center gap-16 py-10">
+      <div className="container mx-auto px-6 xl:px-28 lg:px-40 min-h-screen flex flex-col justify-center gap-16 py-10">
         {content.seminars.map((seminar) => (
           <div
             key={seminar.id}
-            className="flex flex-col md:flex-row items-center gap-6"
+            className="flex flex-col xl:flex-row items-center xl:py-[20vh] gap-6"
           >
-            <div className="md:w-1/2">
-              <Image
-                src={seminar.image}
-                alt={`Seminar ${seminar.id}`}
-                width={500}
-                height={400}
-                className="w-full h-auto"
-              />
+            <div className="xl:w-1/2 mb-18 sm:mb-[20vh] xl:mb-0">
+              <ThreeImage />
             </div>
-            <div className="md:w-1/2 text-white">
-              <p className="italic font-semibold text-sm md:text-base lg:text-[18px] mb-2">
+            <div className="xl:w-1/2 text-white">
+              <p className="italic font-semibold text-sm xl:text-base lg:text-[18px] mb-2">
                 Seminar {seminar.id}
               </p>
-              <h3 className="font-semibold text-[22px] md:text-[30px] lg:text-[40px] leading-snug mb-2">
+              <h3 className="font-semibold text-[22px] xl:text-[30px] lg:text-[40px] leading-snug mb-2">
                 {seminar.title}
               </h3>
-              <p className="text-sm md:text-base lg:text-[18px]">
+              <p className="text-sm xl:text-base lg:text-[18px]">
                 {seminar.speaker}
                 <br />
                 {seminar.role}
