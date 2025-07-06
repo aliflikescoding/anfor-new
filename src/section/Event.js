@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { useHeader } from "@/context/HeaderContext";
+import ThreeImage from "@/components/ThreeImage";
 
 const EventSection = () => {
   const { setIsSticky, setIsShowButton, setSection } = useHeader();
@@ -97,13 +98,7 @@ const EventSection = () => {
       <div className="container mx-auto px-6 md:px-28 lg:px-40 pt-10 pb-24">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-1/2">
-            <Image
-              src="/images/headerevent.png"
-              alt="Event Header"
-              width={600}
-              height={500}
-              className="w-full h-auto"
-            />
+            <ThreeImage />
           </div>
           <div className="md:w-1/2 text-white text-sm md:text-base lg:text-[18px] leading-relaxed">
             {content.description}
