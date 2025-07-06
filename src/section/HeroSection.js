@@ -15,7 +15,7 @@ const HeroSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(false);
           setIsShowButton(false);
-          setSection(hero);
+          setSection("hero");
         }
       },
       { threshold: 0.1 }
