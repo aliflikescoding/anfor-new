@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: anforcomnew --default;
-};
+}
+
+;
 
 @plugin "daisyui/theme" {
   name: "anforcomnew";
   default: true;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: "light";
   --color-base-100: oklch(98% 0.002 247.839);
   --color-base-200: oklch(98% 0 0);
   --color-base-300: oklch(96% 0.003 264.542);
@@ -37,7 +40,7 @@
   --size-field: 0.25rem;
   --border: 1px;
   --depth: 1;
-  --noise: 1;
+  --noise: 0;
 }
 
 @utility btn {
@@ -76,6 +79,7 @@
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -89,20 +93,41 @@
 
 @layer components {
   .custom-container {
-      @apply max-w-[1440px] mx-auto px-4;
-    }
-        .btn-custom {
-          padding-top: 2rem !important;
-          padding-bottom: 2rem !important;
-          padding-left: 5.5rem !important;
-          padding-right: 5.5rem !important;
-          font-weight: 500 !important;
-          /* font-medium = 500 */
-          font-size: 1rem !important;
-          /* text-3xl = 30px = 1.875rem */
-        }
+    @apply max-w-[1440px] mx-auto px-4;
+  }
 
-        .btn-white {
-          @apply bg-white;
-        }
+  .btn-custom {
+    /* Mobile styles (default) */
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    /* 14px */
+
+    /* Tablet styles */
+    @media (min-width: 640px) {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+      padding-left: 3.5rem !important;
+      padding-right: 3.5rem !important;
+      font-size: 0.9375rem !important;
+      /* 15px */
+    }
+
+    /* Desktop styles */
+    @media (min-width: 1024px) {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+      padding-left: 5.5rem !important;
+      padding-right: 5.5rem !important;
+      font-size: 1rem !important;
+      /* 16px */
+    }
+  }
+
+  .btn-white {
+    @apply bg-white;
+  }
 }

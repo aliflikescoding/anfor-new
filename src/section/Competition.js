@@ -13,7 +13,6 @@ import {
 const CompetitionSection = () => {
   const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [accordionHeights, setAccordionHeights] = useState([]);
   const accordionRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
@@ -50,18 +49,11 @@ const CompetitionSection = () => {
     },
   ];
 
-  // Animasi - DISABLED
-  // useEffect(() => {
-  //   if (isInView) {
-  //     controls.start("visible");
-  //   }
-  // }, [isInView, controls]);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsSticky(true); // or false, depending on your desired header behavior
+          setIsSticky(true);
           setIsShowButton(true);
           setSection("competition");
         }
@@ -103,11 +95,9 @@ const CompetitionSection = () => {
       const sectionBottom = rect.bottom;
       const windowHeight = window.innerHeight;
 
-      // Check if section is in viewport
       const isInViewport = sectionTop < windowHeight && sectionBottom > 0;
 
       if (isInViewport && !isScrollTrapped) {
-        // Start trapping when section enters viewport
         setIsScrollTrapped(true);
         document.body.style.overflow = "hidden";
         lastScrollY.current = window.scrollY;
@@ -121,7 +111,6 @@ const CompetitionSection = () => {
         const delta = e.deltaY || (e.detail && e.detail * 40) || 0;
         scrollBuffer.current += delta;
 
-        // Threshold for changing slides (adjust this value to make it more/less sensitive)
         const threshold = 100;
 
         if (Math.abs(scrollBuffer.current) > threshold) {
@@ -140,16 +129,13 @@ const CompetitionSection = () => {
             });
           }
 
-          // If we've reached the end and user is scrolling down, or at beginning and scrolling up
           if (
             (newIndex === programs.length - 1 && direction > 0) ||
             (newIndex === 0 && direction < 0)
           ) {
-            // Release the trap
             setIsScrollTrapped(false);
             document.body.style.overflow = "auto";
 
-            // If at the end, allow normal scrolling to continue
             if (newIndex === programs.length - 1 && direction > 0) {
               window.scrollTo(0, lastScrollY.current + rect.height);
             }
@@ -180,7 +166,6 @@ const CompetitionSection = () => {
               return newState;
             });
           } else if (newIndex === programs.length - 1) {
-            // Release trap at the end
             setIsScrollTrapped(false);
             document.body.style.overflow = "auto";
           }
@@ -195,7 +180,6 @@ const CompetitionSection = () => {
               return newState;
             });
           } else if (newIndex === 0) {
-            // Release trap at the beginning
             setIsScrollTrapped(false);
             document.body.style.overflow = "auto";
           }
@@ -203,25 +187,21 @@ const CompetitionSection = () => {
       }
     };
 
-    // Add event listeners
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKeyDown);
 
-    // Cleanup
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "auto"; // Ensure body overflow is restored
+      document.body.style.overflow = "auto";
     };
   }, [isScrollTrapped, activeIndex, programs.length]);
 
-  // Intersection Observer to detect when section enters viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            // Section is prominently in view, start trapping
             if (!isScrollTrapped) {
               setIsScrollTrapped(true);
               document.body.style.overflow = "hidden";
@@ -229,7 +209,6 @@ const CompetitionSection = () => {
               scrollBuffer.current = 0;
             }
           } else if (!entry.isIntersecting && isScrollTrapped) {
-            // Section is out of view, release trap
             setIsScrollTrapped(false);
             document.body.style.overflow = "auto";
           }
@@ -251,20 +230,6 @@ const CompetitionSection = () => {
   }, [isScrollTrapped]);
 
   useEffect(() => {
-    const updateHeights = () => {
-      const heights = accordionRefs.current.map(
-        (ref) => ref?.offsetHeight || 0
-      );
-      setAccordionHeights(heights);
-    };
-
-    updateHeights();
-    window.addEventListener("resize", updateHeights);
-
-    return () => window.removeEventListener("resize", updateHeights);
-  }, [activeIndex]);
-
-  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
@@ -274,7 +239,6 @@ const CompetitionSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Variants animasi - DISABLED (now static)
   const containerVariants = {
     hidden: { opacity: 1 },
     visible: {
@@ -317,10 +281,8 @@ const CompetitionSection = () => {
       initial="visible"
       animate="visible"
       variants={containerVariants}
-      className="bg-[#FDF4F2] px-4 py-10 sm:px-6 md:px-8 lg:px-4 relative"
-      style={{ height: "120vh" }}
+      className="bg-[#FDF4F2] px-4 relative min-h-screen"
     >
-      {/* Scroll indicator */}
       {isScrollTrapped && (
         <div className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-sm rounded-full p-2">
           <div className="text-xs text-gray-600">
@@ -334,25 +296,26 @@ const CompetitionSection = () => {
           className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 relative"
           variants={containerVariants}
         >
-          {/* Left Column - Accordion */}
-          <div className="flex flex-col">
+          <div className="flex flex-col h-screen lg:h-auto">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
                 ref={(el) => (accordionRefs.current[index] = el)}
                 className={`relative border-b border-[#E9EAEB] ${
-                  activeIndex === index ? "z-10" : ""
+                  activeIndex === index
+                    ? "z-10 h-screen lg:h-auto"
+                    : "lg:h-[100px]"
                 }`}
                 style={{ borderWidth: "1px" }}
                 variants={itemVariants}
               >
                 <div
                   className={`cursor-pointer transition-all duration-300 ${
-                    activeIndex === index ? "pt-12 pb-6" : "py-6"
+                    activeIndex === index ? "pt-12 pb-6 h-full" : "py-6 h-full"
                   }`}
                   onClick={() => !isScrollTrapped && toggleAccordion(index)}
                 >
-                  <div className="flex flex-col items-center gap-2">
+                  <div className="flex flex-col items-center gap-2 h-full justify-center">
                     <h3
                       className="text-4xl md:text-6xl lg:text-[96px] font-bold text-[#020B0D] leading-none hover:scale-105 transition-transform"
                       style={{ fontFamily: "Inter, sans-serif" }}
@@ -435,15 +398,20 @@ const CompetitionSection = () => {
             ))}
           </div>
 
-          {/* Right Column - Image with Cropping Effect (desktop only) */}
-          <div className="hidden lg:block h-full">
+          <div className="hidden lg:block h-screen sticky top-0">
             <div className="flex flex-col h-full">
               {programs.map((program, index) => (
                 <motion.div
                   key={program.id}
                   className="relative overflow-hidden transition-all duration-300"
                   style={{
-                    height: accordionHeights[index] || "auto",
+                    height: activeIndex === index ? "100vh" : "0",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    opacity: activeIndex === index ? 1 : 0,
                   }}
                   variants={imageVariants}
                 >
@@ -454,9 +422,6 @@ const CompetitionSection = () => {
                     className="object-cover"
                     style={{ objectPosition: "center" }}
                   />
-                  {activeIndex !== index && (
-                    <div className="absolute inset-0 bg-black/20" />
-                  )}
                 </motion.div>
               ))}
             </div>

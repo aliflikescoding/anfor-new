@@ -19,7 +19,7 @@ const AboutSection = () => {
         }
         // do nothing when it leaves
       },
-      { threshold: 0.1 }
+      { threshold: 0.4 }
     );
 
     if (sectionRef.current) {
@@ -49,7 +49,7 @@ const AboutSection = () => {
           <p>Teaser Video</p> <IoPlayCircleOutline />
         </Link>
         {!isShowButton && (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center flex-wrap gap-4">
             <button className="btn btn-custom">Event 🗓️</button>
             <button className="btn btn-custom">Home 🏠</button>
             <button className="btn btn-custom">Competition 🏆</button>
