@@ -4,7 +4,7 @@ import { IoPlayCircleOutline } from "react-icons/io5";
 
 const AboutSection = () => {
   return (
-    <div className="custom-container pt-[15vh] pb-[30vh]">
+    <div className="custom-container pt-[45vh] pb-[60vh]">
       <div className="flex flex-col items-center justify-between text-center relative">
         <h1 className="text-5xl capitalize font-semibold">tentang anforcom</h1>
         <p className="text-md my-4">
