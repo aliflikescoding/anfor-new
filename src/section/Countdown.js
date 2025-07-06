@@ -2,8 +2,36 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useHeader } from "@/context/HeaderContext";
 
 const CountdownSection = () => {
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
+  const sectionRef = useRef(null);
+
+  // Sticky header observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+          setIsShowButton(true);
+          setSection("countdown");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky]);
+
   const calculateTimeLeft = () => {
     const targetDate = new Date("2025-08-31T23:59:59");
     const now = new Date();
@@ -43,8 +71,7 @@ const CountdownSection = () => {
   }, []);
 
   return (
-    <div className="bg-[#FEB82F] w-full overflow-hidden py-4 sm:py-6 lg:py-8 px-0">
-
+    <div ref={sectionRef} className="bg-[#FEB82F] w-full overflow-hidden py-4 sm:py-6 lg:py-8 px-0">
       <div ref={marqueeRef} className="relative h-[40px] sm:h-[60px] lg:h-[80px] overflow-hidden w-full m-0">
         <div
           className={`absolute w-max flex whitespace-nowrap items-center ${isVisible ? "animate-marquee" : "justify-center"}`}

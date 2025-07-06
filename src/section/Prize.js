@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { useHeader } from "@/context/HeaderContext";
 
 const PrizeSection = () => {
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const prizes = [
     {
       id: 1,
@@ -26,9 +28,31 @@ const PrizeSection = () => {
     }
   ];
 
-  // Scroll animation ref
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+          setIsShowButton(true);
+          setSection("prize");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [setIsSticky]);
 
   return (
     <section

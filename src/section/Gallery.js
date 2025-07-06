@@ -1,6 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { useHeader } from "@/context/HeaderContext";
 
 const GalleryRow = () => (
   <div className="flex flex-wrap lg:flex-nowrap w-full lg:w-screen flex-shrink-0 h-auto lg:h-[500px]">
@@ -9,7 +12,7 @@ const GalleryRow = () => (
       <div>
         <h2 className="font-inter italic font-bold text-[30px] md:text-[60px] lg:text-[100px] leading-[1] text-white text-center pb-4 md:pb-0">
           <span className="lg:hidden">ANFORCOM</span>
-          <span className="hidden lg:inline-block">ANF<br/>ORC<br/>OM</span>
+          <span className="hidden lg:inline-block">ANF<br />ORC<br />OM</span>
         </h2>
       </div>
       <div className="overflow-hidden rounded-[10px] w-full h-[100px] md:h-[130px] lg:h-[150px] group">
@@ -50,7 +53,7 @@ const GalleryRow = () => (
       <div className="text-center">
         <h2 className="font-inter font-bold text-[30px] md:text-[60px] lg:text-[100px] leading-[1] mb-2 pt-4 md:pt-0">
           <span className="lg:hidden">GALLERY</span>
-          <span className="hidden lg:inline-block">GAL<br/>ERY</span>
+          <span className="hidden lg:inline-block">GAL<br />ERY</span>
         </h2>
         <p className="font-inter text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed">
           Galeri ini merangkum semangat dan antusiasme <span className="font-bold">Anforcom 2024.</span> Setiap
@@ -76,11 +79,43 @@ const GalleryRow = () => (
 );
 
 const GallerySection = () => {
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+          setIsShowButton(true);
+          setSection("gallery");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [setIsSticky, setIsShowButton, setSection]);
+
   return (
-    <div className="w-full overflow-hidden">
+    <div ref={sectionRef} className="w-full overflow-hidden">
       {/* SECTION 1 */}
       <div className="bg-[#FDF4F2] min-h-screen flex items-center justify-center px-4">
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="text-center"
+        >
           <p className="text-[15px] md:text-[25px] lg:text-[36px] font-semibold text-black font-inter">
             Powered by
           </p>
@@ -90,18 +125,18 @@ const GallerySection = () => {
           <p className="text-[15px] md:text-[25px] lg:text-[36px] font-semibold text-black font-inter">
             Snapshots of collaboration, innovation, and inspiration.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* SECTION 2 */}
       <div className="bg-[#FEB82F] min-h-screen flex items-center overflow-hidden relative">
-        {/* Desktop: animasi scroll berjalan */}
+        {/* Desktop: scroll animation */}
         <div className="hidden lg:flex w-max animate-gallery-scroll">
           <GalleryRow />
           <GalleryRow />
         </div>
 
-        {/* Tablet & Mobile: statis */}
+        {/* Mobile & Tablet: static */}
         <div className="block lg:hidden w-full my-8">
           <GalleryRow />
         </div>
