@@ -317,7 +317,7 @@ const CompetitionSection = () => {
       initial="visible"
       animate="visible"
       variants={containerVariants}
-      className="bg-[#FDF4F2] px-4 py-10 sm:px-6 md:px-8 lg:px-4 relative"
+      className="bg-[#FDF4F2] px-4 relative"
       style={{ height: "120vh" }}
     >
       {/* Scroll indicator */}

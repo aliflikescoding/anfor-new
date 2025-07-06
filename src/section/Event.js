@@ -1,16 +1,45 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
+import { useRef, useEffect } from "react";
+import { useHeader } from "@/context/HeaderContext";
 
 const EventSection = () => {
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSticky(true);
+          setIsShowButton(true);
+          setSection("event");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="bg-[#FEB82F]">
-      
+    <div ref={sectionRef} className="bg-[#FEB82F]">
       {/* ========================= Halaman 1 ========================= */}
       <div className="container mx-auto px-6 md:px-28 lg:px-40">
         <div className="pt-24 pb-10">
           <h2 className="text-[28px] md:text-[35px] lg:text-[50px] font-bold italic leading-tight text-left text-white">
-            Kenapa hanya jadi penonton, kalau lewat <span className="font-bold">seminar</span> ini kamu bisa ikut membentuk <span className="font-bold">masa depan teknologi?</span>
+            Kenapa hanya jadi penonton, kalau lewat{" "}
+            <span className="font-bold">seminar</span> ini kamu bisa ikut
+            membentuk <span className="font-bold">masa depan teknologi?</span>
           </h2>
         </div>
       </div>
@@ -39,14 +68,15 @@ const EventSection = () => {
             />
           </div>
           <div className="md:w-1/2 text-white text-sm md:text-base lg:text-[18px] leading-relaxed">
-            Di tengah arus perubahan digital yang semakin cepat, seminar Anforcom 2025 menghadirkan para ahli, praktisi, dan inovator untuk membagikan wawasan, pengalaman, serta gagasan masa depan.
+            Di tengah arus perubahan digital yang semakin cepat, seminar
+            Anforcom 2025 menghadirkan para ahli, praktisi, dan inovator untuk
+            membagikan wawasan, pengalaman, serta gagasan masa depan.
           </div>
         </div>
       </div>
 
       {/* ========================= Halaman 2 ========================= */}
       <div className="container mx-auto px-6 md:px-28 lg:px-40 min-h-screen flex flex-col justify-center gap-16 py-10">
-        
         {/* Seminar 1 */}
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="md:w-1/2">
@@ -59,12 +89,15 @@ const EventSection = () => {
             />
           </div>
           <div className="md:w-1/2 text-white">
-            <p className="italic font-semibold text-sm md:text-base lg:text-[18px] mb-2">Seminar 1</p>
+            <p className="italic font-semibold text-sm md:text-base lg:text-[18px] mb-2">
+              Seminar 1
+            </p>
             <h3 className="font-semibold text-[22px] md:text-[30px] lg:text-[40px] leading-snug mb-2">
               Tips dan Trik dalam Menghubungi Dosen
             </h3>
             <p className="text-sm md:text-base lg:text-[18px]">
-              Mochammad Dzahwan ‘Wanceng’ Fadholy<br />
+              Mochammad Dzahwan 'Wanceng' Fadholy
+              <br />
               Women Heart Engineer @ Wanceng Inc.
             </p>
           </div>
@@ -82,17 +115,19 @@ const EventSection = () => {
             />
           </div>
           <div className="md:w-1/2 text-white">
-            <p className="italic font-semibold text-sm md:text-base lg:text-[18px] mb-2">Seminar 2</p>
+            <p className="italic font-semibold text-sm md:text-base lg:text-[18px] mb-2">
+              Seminar 2
+            </p>
             <h3 className="font-semibold text-[22px] md:text-[30px] lg:text-[40px] leading-snug mb-2">
               Membangun Relasi Profesional di Dunia Digital
             </h3>
             <p className="text-sm md:text-base lg:text-[18px]">
-              Rani Puspitasari<br />
+              Rani Puspitasari
+              <br />
               Community Builder @ Digital Connect
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );

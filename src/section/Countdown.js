@@ -71,7 +71,7 @@ const CountdownSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-[#FEB82F] w-full overflow-hidden py-4 sm:py-6 lg:py-8 px-0">
+    <div ref={sectionRef} className="bg-[#FEB82F] w-full overflow-hidden py-[20vh] px-0">
       <div ref={marqueeRef} className="relative h-[40px] sm:h-[60px] lg:h-[80px] overflow-hidden w-full m-0">
         <div
           className={`absolute w-max flex whitespace-nowrap items-center ${isVisible ? "animate-marquee" : "justify-center"}`}

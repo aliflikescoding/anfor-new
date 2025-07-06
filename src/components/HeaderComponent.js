@@ -7,17 +7,36 @@ import { useHeader } from "@/context/HeaderContext";
 const HeaderComponent = () => {
   const { isSticky, isShowButton, section } = useHeader();
 
-  const getButtonVariant = () => {
-    // Current logic for footer section
-    if (section === "footer") {
+  const getButtonVariantComp = () => {
+    if (section === "competition") {
+      return "btn-primary";
+    }
+
+    if (section === "event") {
+      return "btn-outline btn-accent";
+    }
+
+    return "btn-accent"
+  }
+
+  const getButtonVariantHome = () => {
+    if (section === "home") {
+      return "btn-primary";
+    }
+
+    if (section === "event") {
+      return "btn-outline btn-accent";
+    }
+
+    return "btn-accent";
+  };
+
+  const getButtonVariantEvent = () => {
+    if (section === "event") {
       return "btn-accent";
     }
 
-    // Default case
     return "btn-accent";
-
-    // Room for additional logic in the future
-    // Add more conditions here as needed
   };
 
   const getButtonSectionVariant = () => {
@@ -29,11 +48,28 @@ const HeaderComponent = () => {
   };
 
   const getFontStyle = () => {
-    if (section === "footer") {
+    if (section === "footer" || section === "event") {
       return "text-base-100";
     }
 
-    return "text-base-content";
+    if (section === "countdown") {
+      return "bg-base-100"
+    }
+
+    return "text-base-content bg-transparent";
+  };
+
+  const getButtonVariant = () => {
+    // Current logic for footer section
+    if (section === "footer") {
+      return "btn-accent";
+    }
+
+    // Default case
+    return "btn-accent";
+
+    // Room for additional logic in the future
+    // Add more conditions here as needed
   };
 
   if (isSticky) {
@@ -50,17 +86,17 @@ const HeaderComponent = () => {
           {isShowButton ? (
             <div className="flex items-center gap-4">
               <button
-                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariantEvent()} btn-custom`}
               >
                 Event 🗓️
               </button>
               <button
-                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariantHome()} btn-custom`}
               >
                 Home 🏠
               </button>
               <button
-                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariantComp()} btn-custom`}
               >
                 Competition 🏆
               </button>

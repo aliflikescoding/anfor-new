@@ -9,7 +9,7 @@
   name: "anforcomnew";
   default: true;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: "light";
   --color-base-100: oklch(98% 0.002 247.839);
   --color-base-200: oklch(98% 0 0);
   --color-base-300: oklch(96% 0.003 264.542);
@@ -37,7 +37,7 @@
   --size-field: 0.25rem;
   --border: 1px;
   --depth: 1;
-  --noise: 1;
+  --noise: 0;
 }
 
 @utility btn {
