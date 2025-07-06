@@ -1,26 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: anforcomnew --default;
+};
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "daisyui/theme" {
+  name: "anforcomnew";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.002 247.839);
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(96% 0.003 264.542);
+  --color-base-content: oklch(0% 0 0);
+  --color-primary: #FEB82F;
+  --color-primary-content: oklch(0% 0 0);
+  --color-secondary: oklch(74% 0.16 232.661);
+  --color-secondary-content: oklch(29% 0.066 243.157);
+  --color-accent: oklch(0% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(0% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(70% 0.165 254.624);
+  --color-info-content: oklch(28% 0.091 267.935);
+  --color-success: oklch(84% 0.238 128.85);
+  --color-success-content: oklch(27% 0.072 132.109);
+  --color-warning: oklch(85% 0.199 91.936);
+  --color-warning-content: oklch(28% 0.066 53.813);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility btn {
+  @apply capitalize;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scrollbar-gutter: auto !important;
+  }
+
+  html:has(body.content-overflow-y) {
+    scrollbar-gutter: stable !important;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .custom-container {
+      @apply max-w-[1440px] mx-auto px-4;
+    }
+        .btn-custom {
+          padding-top: 2rem !important;
+          padding-bottom: 2rem !important;
+          padding-left: 5.5rem !important;
+          padding-right: 5.5rem !important;
+          font-weight: 500 !important;
+          /* font-medium = 500 */
+          font-size: 1rem !important;
+          /* text-3xl = 30px = 1.875rem */
+        }
 }
