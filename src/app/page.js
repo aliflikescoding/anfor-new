@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <LenisWrapper>
       <HeaderProvider>
-        <main>
+        <main className="overflow-x-hidden">
           <HeroSection />
           <AboutSection />
           <Event />

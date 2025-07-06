@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useHeader } from "@/context/HeaderContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const HeaderComponent = () => {
   const { isSticky, isShowButton, section } = useHeader();
@@ -97,19 +98,13 @@ const HeaderComponent = () => {
               <button className={`btn ${getButtonVariant()} btn-custom`}>
                 daftar
               </button>
-              <button
-                onClick={() => setIsLikeBarOpen(!isLikeBarOpen)}
-                className="block xl:hidden btn btn-ghost btn-custom"
-              >
-                Like
-              </button>
             </div>
           </div>
         </div>
 
         {/* Mobile header */}
         <div
-          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] w-full p-4 transition-all`}
+          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] p-4 transition-all`}
         >
           <div className="custom-container flex justify-between items-center">
             <Link href={`/`}>
@@ -123,9 +118,9 @@ const HeaderComponent = () => {
               </button>
               <button
                 onClick={() => setIsLikeBarOpen(!isLikeBarOpen)}
-                className="btn btn-ghost btn-custom"
+                className="btn btn-sm btn-neutral"
               >
-                Like
+                <RxHamburgerMenu />
               </button>
             </div>
           </div>
