@@ -17,7 +17,7 @@ const FooterSection = () => {
           setSection("footer");
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.4 }
     );
 
     if (sectionRef.current) {

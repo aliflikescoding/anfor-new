@@ -13,15 +13,23 @@ const HeaderComponent = () => {
     }
 
     if (section === "event") {
-      return "btn-outline btn-accent";
+      return "glass";
+    }
+
+    if (section === "gallery") {
+      return "glass";
     }
 
     if (section === "rundown") {
-      return "";
+      return "glass";
     }
 
-    return "btn-accent"
-  }
+    if (section === "faq") {
+      return "glass";
+    }
+
+    return "btn-accent";
+  };
 
   const getButtonVariantHome = () => {
     if (section === "home") {
@@ -29,11 +37,19 @@ const HeaderComponent = () => {
     }
 
     if (section === "event") {
-      return "btn-outline btn-accent";
+      return "glass";
+    }
+
+    if (section === "gallery") {
+      return "glass";
     }
 
     if (section === "rundown") {
-      return "";
+      return "glass";
+    }
+
+    if (section === "faq") {
+      return "glass text-base-content";
     }
 
     return "btn-accent";
@@ -44,8 +60,20 @@ const HeaderComponent = () => {
       return "btn-accent";
     }
 
+    if (section === "gallery") {
+      return "glass";
+    }
+
+    if (section === "faq") {
+      return "glass";
+    }
+
     if (section === "rundown") {
-      return "";
+      return "glass";
+    }
+
+    if (section === "faq") {
+      return "glass";
     }
 
     return "btn-accent";
@@ -53,11 +81,15 @@ const HeaderComponent = () => {
 
   const getButtonSectionVariant = () => {
     if (section === "footer") {
-      return ("btn-outline");
+      return "btn-outline";
     }
 
     if (section === "prize") {
       return "btn-ghost";
+    }
+
+    if (section === "faq") {
+      return "glass";
     }
 
     return "";
@@ -69,7 +101,7 @@ const HeaderComponent = () => {
     }
 
     if (section === "countdown") {
-      return "bg-base-100"
+      return "bg-base-100";
     }
 
     return "text-base-content bg-transparent";

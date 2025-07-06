@@ -46,7 +46,7 @@ const FaqSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(true);
           setIsShowButton(true);
-          setSection(true);
+          setSection("faq");
         }
       },
       { threshold: 0.1 }
