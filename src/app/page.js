@@ -7,6 +7,7 @@ import Rundown from '@/section/Rundown';
 import Gallery from '@/section/Gallery';
 import Teaser from '@/section/Teaser';
 import LenisWrapper from "@/components/LenisWrapper";
+import FaqSection from "@/section/FaqSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Rundown />
       <Gallery />
       <Teaser />
+      <FaqSection />
     </LenisWrapper>
   );
 }
