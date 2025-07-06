@@ -6,7 +6,7 @@ import HeaderComponent from "@/components/HeaderComponent";
 import { useHeader } from "@/context/HeaderContext";
 
 const HeroSection = () => {
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const HeroSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(false);
           setIsShowButton(false);
+          setSection(hero);
         }
       },
       { threshold: 0.1 }

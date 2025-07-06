@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 
 const CompetitionSection = () => {
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const [activeIndex, setActiveIndex] = useState(0);
   const [accordionHeights, setAccordionHeights] = useState([]);
   const accordionRefs = useRef([]);
@@ -63,6 +63,7 @@ const CompetitionSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(true); // or false, depending on your desired header behavior
           setIsShowButton(true);
+          setSection("competition");
         }
       },
       { threshold: 0.1 }

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useHeader } from "@/context/HeaderContext";
 
 const CountdownSection = () => {
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const sectionRef = useRef(null);
 
   // Sticky header observer
@@ -15,6 +15,7 @@ const CountdownSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(true);
           setIsShowButton(true);
+          setSection("countdown");
         }
       },
       { threshold: 0.1 }

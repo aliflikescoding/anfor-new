@@ -5,11 +5,42 @@ import Image from "next/image";
 import { useHeader } from "@/context/HeaderContext";
 
 const HeaderComponent = () => {
-  const { isSticky, isShowButton } = useHeader();
+  const { isSticky, isShowButton, section } = useHeader();
+
+  const getButtonVariant = () => {
+    // Current logic for footer section
+    if (section === "footer") {
+      return "btn-accent";
+    }
+
+    // Default case
+    return "btn-accent";
+
+    // Room for additional logic in the future
+    // Add more conditions here as needed
+  };
+
+  const getButtonSectionVariant = () => {
+    if (section === "footer") {
+      return ("btn-outline");
+    }
+
+    return "";
+  };
+
+  const getFontStyle = () => {
+    if (section === "footer") {
+      return "text-base-100";
+    }
+
+    return "text-base-content";
+  };
 
   if (isSticky) {
     return (
-      <div className="fixed top-0 left-0 z-[99] w-full p-4 transition-all">
+      <div
+        className={`fixed ${getFontStyle()} top-0 left-0 z-[99] w-full p-4 transition-all`}
+      >
         <div className="custom-container flex justify-between items-center">
           <Link href={`/`}>
             <p className="font-bold uppercase text-3xl">
@@ -18,9 +49,21 @@ const HeaderComponent = () => {
           </Link>
           {isShowButton ? (
             <div className="flex items-center gap-4">
-              <button className="btn btn-custom">Event 🗓️</button>
-              <button className="btn btn-custom">Home 🏠</button>
-              <button className="btn btn-custom">Competition 🏆</button>
+              <button
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+              >
+                Event 🗓️
+              </button>
+              <button
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+              >
+                Home 🏠
+              </button>
+              <button
+                className={`btn ${getButtonSectionVariant()} ${getButtonVariant()} btn-custom`}
+              >
+                Competition 🏆
+              </button>
             </div>
           ) : (
             <Link href={`/`}>
@@ -34,7 +77,9 @@ const HeaderComponent = () => {
               />
             </Link>
           )}
-          <button className="btn btn-neutral btn-custom">daftar</button>
+          <button className={`btn ${getButtonVariant()} btn-custom`}>
+            daftar
+          </button>
         </div>
       </div>
     );
@@ -57,7 +102,7 @@ const HeaderComponent = () => {
           className="h-auto w-auto"
         />
       </Link>
-      <button className="btn btn-neutral btn-custom">daftar</button>
+      <button className={`btn ${getButtonVariant()} btn-custom`}>daftar</button>
     </div>
   );
 };

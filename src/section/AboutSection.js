@@ -6,7 +6,7 @@ import { IoPlayCircleOutline } from "react-icons/io5";
 import { useHeader } from "@/context/HeaderContext";
 
 const AboutSection = () => {
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, isShowButton, setSection } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const AboutSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(true); // set to true when enters viewport
           setIsShowButton(false);
+          setSection("about");
         }
         // do nothing when it leaves
       },
@@ -47,11 +48,13 @@ const AboutSection = () => {
         >
           <p>Teaser Video</p> <IoPlayCircleOutline />
         </Link>
-        <div className="flex items-center gap-4">
-          <button className="btn btn-custom">Event 🗓️</button>
-          <button className="btn btn-custom">Home 🏠</button>
-          <button className="btn btn-custom">Competition 🏆</button>
-        </div>
+        {!isShowButton && (
+          <div className="flex items-center gap-4">
+            <button className="btn btn-custom">Event 🗓️</button>
+            <button className="btn btn-custom">Home 🏠</button>
+            <button className="btn btn-custom">Competition 🏆</button>
+          </div>
+        )}
         <div className="bg-red-100 absolute w-[211px] h-[251px] rounded-2xl z-[-10] left-[15%] top-[45%]"></div>
         <div className="bg-red-400 absolute w-[196px] h-[123px] rounded-2xl z-[-10] left-[62%] top-[110%]"></div>
         <div className="bg-red-300 absolute w-[132px] h-[94px] rounded-2xl z-[-30] left-[30%] top-[82.5%]"></div>

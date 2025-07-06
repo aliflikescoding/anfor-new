@@ -18,6 +18,7 @@ const TeaserSection = () => {
         if (entry.isIntersecting) {
           setIsSticky(true);
           setIsShowButton(true);
+          setSection("rundown");
         }
       },
       { threshold: 0.1 }

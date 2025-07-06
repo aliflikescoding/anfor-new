@@ -9,7 +9,7 @@
   name: "anforcomnew";
   default: true;
   prefersdark: false;
-  color-scheme: "light";
+  color-scheme: "dark";
   --color-base-100: oklch(98% 0.002 247.839);
   --color-base-200: oklch(98% 0 0);
   --color-base-300: oklch(96% 0.003 264.542);
@@ -18,8 +18,8 @@
   --color-primary-content: oklch(0% 0 0);
   --color-secondary: oklch(74% 0.16 232.661);
   --color-secondary-content: oklch(29% 0.066 243.157);
-  --color-accent: oklch(0% 0 0);
-  --color-accent-content: oklch(100% 0 0);
+  --color-accent: oklch(98% 0.002 247.839);
+  --color-accent-content: oklch(0% 0 0);
   --color-neutral: oklch(0% 0 0);
   --color-neutral-content: oklch(100% 0 0);
   --color-info: oklch(70% 0.165 254.624);
@@ -40,9 +40,10 @@
   --noise: 1;
 }
 
-/* @utility btn {
+@utility btn {
   @apply capitalize;
-} */
+}
+
 
 @layer base {
 
@@ -74,10 +75,6 @@
   .custom-container {
       @apply max-w-[1440px] mx-auto px-4;
     }
-
-    .btn {
-      @apply capitalize bg-base-100;
-    }
         .btn-custom {
           padding-top: 2rem !important;
           padding-bottom: 2rem !important;
@@ -87,5 +84,9 @@
           /* font-medium = 500 */
           font-size: 1rem !important;
           /* text-3xl = 30px = 1.875rem */
+        }
+
+        .btn-white {
+          @apply bg-white;
         }
 }
