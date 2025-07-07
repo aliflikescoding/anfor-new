@@ -57,7 +57,7 @@ const PrizeSection = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full bg-[#FDF4F2] py-[20vh] px-4 overflow-hidden"
+      className="relative w-full bg-[#FDF4F2] mt-40 lg:mt-0 py-20 sm:py-24 md:py-28 px-4 overflow-hidden"
     >
       {/* Background Text */}
       <h2

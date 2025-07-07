@@ -9,7 +9,7 @@ const TeaserSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const YOUTUBE_ID = 'rsWR64xHXQk';
 
-  const { setIsSticky, setIsShowButton } = useHeader();
+  const { setIsSticky, setIsShowButton, setSection } = useHeader();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const TeaserSection = () => {
   };
 
   return (
-    <div ref={sectionRef}>
+    <div id= "teaser" ref={sectionRef}>
       {/* JUDUL */}
       <section className="bg-[#FDF4F2] min-h-screen flex items-center justify-center px-4">
         <motion.div
@@ -68,7 +68,7 @@ const TeaserSection = () => {
       </section>
 
       {/* VIDEO + IMAGE */}
-      <section className="bg-[#FDF4F2] min-h-screen grid grid-cols-1 md:grid-cols-2 w-full">
+      <section id= "teaser-video "className="bg-[#FDF4F2] min-h-screen grid grid-cols-1 md:grid-cols-2 w-full">
         {/* KIRI: VIDEO */}
         <motion.div
           variants={bounceVariant}

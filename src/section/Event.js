@@ -56,7 +56,7 @@ const EventSection = () => {
   };
 
   return (
-    <div ref={sectionRef} className="bg-[#FEB82F]">
+    <div id="event" ref={sectionRef} className="bg-[#FEB82F]">
       {/* ========================= Page 1 ========================= */}
       <div className="container mx-auto px-6 xl:px-28 lg:px-40">
         <div className="pt-24 pb-10">
