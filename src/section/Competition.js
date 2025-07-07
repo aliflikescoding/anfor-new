@@ -277,6 +277,7 @@ const CompetitionSection = () => {
 
   return (
     <motion.div
+      id = "competition"
       ref={sectionRef}
       initial="visible"
       animate="visible"
@@ -400,30 +401,29 @@ const CompetitionSection = () => {
 
           <div className="hidden lg:block h-screen sticky top-0">
             <div className="flex flex-col h-full">
-              {programs.map((program, index) => (
-                <motion.div
-                  key={program.id}
-                  className="relative overflow-hidden transition-all duration-300"
-                  style={{
-                    height: activeIndex === index ? "100vh" : "0",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    opacity: activeIndex === index ? 1 : 0,
-                  }}
-                  variants={imageVariants}
-                >
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: "center" }}
-                  />
-                </motion.div>
-              ))}
+              <AnimatePresence mode="wait">
+                {programs.map((program, index) =>
+                  activeIndex === index ? (
+                    <motion.div
+                      key={program.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={program.image}
+                        alt={program.title}
+                        fill
+                        className="object-cover"
+                        style={{ objectPosition: "center" }}
+                      />
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
+
             </div>
           </div>
         </motion.div>

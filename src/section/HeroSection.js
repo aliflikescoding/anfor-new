@@ -33,7 +33,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="custom-container pt-[7.5vh] sm:pt-[15vh] pb-[30vh]">
+    <div id="home" ref={sectionRef} className="custom-container pt-[7.5vh] sm:pt-[15vh] pb-[30vh]">
       <div className="relative h-[500px] overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image

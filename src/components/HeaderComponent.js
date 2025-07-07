@@ -49,6 +49,14 @@ const HeaderComponent = () => {
     return "btn-neutral";
   };
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setIsLikeBarOpen(false);
+    }
+  };
+
   if (isSticky) {
     return (
       <>
@@ -66,16 +74,19 @@ const HeaderComponent = () => {
             {isShowButton ? (
               <div className="hidden xl:flex items-center gap-4">
                 <button
+                  onClick={() => scrollToSection("event")}
                   className={`btn ${getButtonSectionVariant()} ${getButtonVariantEvent()} btn-custom`}
                 >
                   Event
                 </button>
                 <button
+                  onClick={() => scrollToSection("home")}
                   className={`btn ${getButtonSectionVariant()} ${getButtonVariantHome()} btn-custom`}
                 >
                   Home
                 </button>
                 <button
+                  onClick={() => scrollToSection("competition")}
                   className={`btn ${getButtonSectionVariant()} ${getButtonVariantComp()} btn-custom`}
                 >
                   Competition
@@ -95,9 +106,14 @@ const HeaderComponent = () => {
             )}
 
             <div className="flex items-center gap-2">
-              <button className={`btn ${getButtonVariant()} btn-custom`}>
+              <a
+                href="https://app.anforcom.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn ${getButtonVariant()} btn-custom`}
+              >
                 daftar
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -112,17 +128,12 @@ const HeaderComponent = () => {
                 anforcom <br /> 2025
               </p>
             </Link>
-            <div className="flex items-center gap-2">
-              <button className={`btn ${getButtonVariant()} btn-custom`}>
-                daftar
-              </button>
-              <button
-                onClick={() => setIsLikeBarOpen(!isLikeBarOpen)}
-                className="btn btn-sm btn-neutral"
-              >
-                <RxHamburgerMenu />
-              </button>
-            </div>
+            <button
+              onClick={() => setIsLikeBarOpen(!isLikeBarOpen)}
+              className="btn btn-sm btn-neutral"
+            >
+              <RxHamburgerMenu />
+            </button>
           </div>
 
           {/* Like Bar with Framer Motion */}
@@ -133,23 +144,34 @@ const HeaderComponent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 30 }}
                 transition={{ duration: 0.3 }}
-                className="mt-4 bg-base-200 p-4 flex justify-center gap-4 shadow-md rounded-xl"
+                className="mt-4 bg-base-200 p-4 flex flex-col items-center gap-4 shadow-md rounded-xl"
               >
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantEvent()} btn-custom`}
+                  onClick={() => scrollToSection("event")}
+                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantEvent()} btn-custom w-full`}
                 >
                   Event
                 </button>
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantHome()} btn-custom`}
+                  onClick={() => scrollToSection("home")}
+                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantHome()} btn-custom w-full`}
                 >
                   Home
                 </button>
                 <button
-                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantComp()} btn-custom`}
+                  onClick={() => scrollToSection("competition")}
+                  className={`btn ${getButtonSectionVariant()} ${getButtonVariantComp()} btn-custom w-full`}
                 >
                   Competition
                 </button>
+                <a
+                  href="https://app.anforcom.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn ${getButtonVariant()} btn-custom w-full`}
+                >
+                  daftar
+                </a>
               </motion.div>
             )}
           </AnimatePresence>
@@ -158,7 +180,7 @@ const HeaderComponent = () => {
     );
   }
 
-  // Non-sticky header (no Like button, no like bar)
+  // Non-sticky header
   return (
     <div className="flex mt-8 justify-between items-center transition-all">
       <Link href={`/`}>
@@ -176,7 +198,14 @@ const HeaderComponent = () => {
           className="h-auto w-[50px] sm:w-auto"
         />
       </Link>
-      <button className={`btn ${getButtonVariant()} btn-custom`}>daftar</button>
+      <a
+        href="https://app.anforcom.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`btn ${getButtonVariant()} btn-custom`}
+      >
+        daftar
+      </a>
     </div>
   );
 };

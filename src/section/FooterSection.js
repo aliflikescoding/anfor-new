@@ -33,7 +33,7 @@ const FooterSection = () => {
 
   return (
     <footer ref={sectionRef} className="bg-[#020b0d] text-base-100">
-      <div className="min-h-screen flex items-center justify-center relative">
+      <div className="min-h-screen flex items-center justify-center relative overflow-x-hidden">
         <div className="h-full w-full">
           {/* Top Text Content */}
           <div className="w-full flex justify-between items-end px-14">
