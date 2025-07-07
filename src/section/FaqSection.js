@@ -70,20 +70,20 @@ const FaqSection = () => {
   return (
     <div ref={sectionRef} className="min-h-screen bg-[#FDF4F2] relative px-4 py-20 overflow-hidden">
       {/* Big FAQ Heading */}
-      <h1 className="font-bold text-[300px] md:text-[500px] leading-none absolute top-0 left-0 text-black select-none z-0">
+      <h1 className="font-bold text-[200px] md:text-[300px] xl:text-[500px] leading-none absolute top-0 left-0 text-black select-none z-0">
         FAQ
       </h1>
 
       {/* FAQ Container */}
-      <div className="mx-auto mt-[30vh] bg-white rounded-xl shadow-md p-10 relative z-10">
+      <div className="mx-auto mt-[10vh] md:mt-[15vh] xl:mt-[30vh] bg-white rounded-xl shadow-md p-10 relative z-10">
         {faq.map((item, index) => (
           <div key={index} className="">
             <div
-              className="flex justify-between cursor-pointer"
+              className="flex justify-between gap-8 cursor-pointer"
               onClick={() => toggleFaq(index)}
             >
-              <p className="text-3xl font-medium">({index + 1})</p>
-              <p className="font-medium text-4xl">{item.question}</p>
+              <p className="text-2xl md:text-4xl font-medium">({index + 1})</p>
+              <p className="font-medium text-2xl md:text-4xl">{item.question}</p>
             </div>
 
             <AnimatePresence>

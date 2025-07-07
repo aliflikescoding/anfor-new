@@ -120,9 +120,9 @@ const HeaderComponent = () => {
 
         {/* Mobile header */}
         <div
-          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] p-4 transition-all`}
+          className={`xl:hidden block fixed ${getFontStyle()} top-0 left-0 z-[99] p-4 transition-al l w-full`}
         >
-          <div className="custom-container flex gap-4 justify-between items-center">
+          <div className="custom-container flex gap-2 justify-between items-center">
             <Link href={`/`}>
               <p className="font-bold uppercase text-xl sm:text-3xl">
                 anforcom <br /> 2025

@@ -46,7 +46,7 @@ const RangkaianSection = () => {
         className="text-center"
       >
         <h1
-          className="text-[#FDF4F2] text-[42px] xs:text-[60px] sm:text-[80px] md:text-[60px] lg:text-[150px] font-extrabold italic leading-[0.9]"
+          className="text-[#FDF4F2] text-6xl sm:text-7xl md:text-9xl font-extrabold italic leading-[0.9]"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
           <span className="block">RANGKAIAN</span>
